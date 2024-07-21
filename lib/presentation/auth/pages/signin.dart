@@ -5,8 +5,8 @@ import 'package:spotify/common/widgets/buttons/basic_button.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
 import 'package:spotify/data/models/auth/sigin_user_req.dart';
 import 'package:spotify/domain/usecases/auth/signin.dart';
-import 'package:spotify/home/pages/home.dart';
 import 'package:spotify/presentation/auth/pages/signup.dart';
+import 'package:spotify/presentation/home/pages/home.dart';
 
 import '../../../service_locator.dart';
 

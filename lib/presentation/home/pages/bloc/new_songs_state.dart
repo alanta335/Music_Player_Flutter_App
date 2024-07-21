@@ -1,4 +1,4 @@
-part of 'new_songs_cubit.dart';
+import 'package:spotify/domain/entity/song/song.dart';
 
 abstract class NewSongsState {}
 

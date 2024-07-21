@@ -1,10 +1,7 @@
-import 'package:bloc/bloc.dart';
-import 'package:spotify/domain/entity/song/song.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/domain/usecases/song/get_new_songs.dart';
-
-import '../../../service_locator.dart';
-
-part 'new_songs_state.dart';
+import 'package:spotify/presentation/home/pages/bloc/new_songs_state.dart';
+import 'package:spotify/service_locator.dart';
 
 class NewSongsCubit extends Cubit<NewSongsState> {
   NewSongsCubit() : super(NewSongsLoading());
