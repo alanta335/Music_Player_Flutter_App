@@ -5,6 +5,7 @@ import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
 import 'package:spotify/core/config/theme/app_colors.dart';
+import 'package:spotify/home/pages/widgets/new_songs.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -38,7 +39,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _homeTopCard(),
-            _Tabs(),
+            tabs(),
+            SizedBox(
+              height: 260,
+              child: TabBarView(controller: _tabController, children: [
+                const NewSongs(),
+                Container(),
+                Container(),
+                Container(),
+              ]),
+            )
           ],
         ),
       ),
@@ -66,7 +76,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _Tabs() {
+  Widget tabs() {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 40,

@@ -5,10 +5,13 @@ class SongEntity {
   final String artist;
   final num duration;
   final Timestamp releaseDate;
+  final String coverUrl;
 
-  SongEntity(
-      {required this.title,
-      required this.artist,
-      required this.duration,
-      required this.releaseDate});
+  SongEntity({
+    required this.title,
+    required this.artist,
+    required this.duration,
+    required this.releaseDate,
+    required this.coverUrl,
+  });
 }

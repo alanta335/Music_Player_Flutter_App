@@ -7,40 +7,48 @@ class SongModel {
     required num duration,
     required Timestamp releaseDate,
     required String title,
+    required String coverUrl,
   }) {
-    _artist = artist;
-    _duration = duration;
-    _releaseDate = releaseDate;
-    _title = title;
+    artist = artist;
+    duration = duration;
+    releaseDate = releaseDate;
+    title = title;
+    coverUrl = coverUrl;
   }
 
   SongModel.fromJson(dynamic json) {
-    _artist = json['artist'];
-    _duration = json['duration'];
-    _releaseDate = json['releaseDate'];
-    _title = json['title'];
+    artist = json['artist'];
+    duration = json['duration'];
+    releaseDate = json['releaseDate'];
+    title = json['title'];
+    coverUrl = json['coverUrl'];
   }
 
-  String? _artist;
-  num? _duration;
-  Timestamp? _releaseDate;
-  String? _title;
+  String? artist;
+  num? duration;
+  Timestamp? releaseDate;
+
+  String? title;
+
+  String? coverUrl;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['artist'] = _artist;
-    map['duration'] = _duration;
-    map['releaseDate'] = _releaseDate;
-    map['title'] = _title;
+    map['artist'] = artist;
+    map['duration'] = duration;
+    map['releaseDate'] = releaseDate;
+    map['title'] = title;
+    map['coverUrl'] = coverUrl;
     return map;
   }
 
   SongEntity toEntity() {
     return SongEntity(
-      title: _title!,
-      artist: _artist!,
-      duration: _duration!,
-      releaseDate: _releaseDate!,
+      title: title!,
+      artist: artist!,
+      duration: duration!,
+      releaseDate: releaseDate!,
+      coverUrl: coverUrl!,
     );
   }
 }
