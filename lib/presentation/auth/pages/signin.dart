@@ -3,10 +3,18 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/buttons/basic_button.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
+import 'package:spotify/data/models/auth/sigin_user_req.dart';
+import 'package:spotify/domain/usecases/auth/signin.dart';
+import 'package:spotify/home/pages/home.dart';
 import 'package:spotify/presentation/auth/pages/signup.dart';
 
+import '../../../service_locator.dart';
+
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  SignInPage({super.key});
+
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +27,7 @@ class SignInPage extends StatelessWidget {
           height: 40,
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: 30,
           vertical: 50,
@@ -31,17 +39,40 @@ class SignInPage extends StatelessWidget {
             const SizedBox(height: 30),
             const TopText(),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(hintText: 'Enter username or email'),
+            TextField(
+              controller: _email,
+              decoration:
+                  const InputDecoration(hintText: 'Enter username or email'),
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(hintText: 'Password'),
+            TextField(
+              controller: _password,
+              decoration: const InputDecoration(hintText: 'Password'),
             ),
             const SizedBox(
               height: 30,
             ),
-            BasicButton(onPressed: () {}, title: "Sign In"),
+            BasicButton(
+                onPressed: () async {
+                  var result = await sl<SignInUserCase>().call(
+                    params: SigninUserReq(
+                      email: _email.text,
+                      password: _password.text,
+                    ),
+                  );
+                  result.fold((ifLeft) {
+                    var snackBar = SnackBar(
+                        content: Text(ifLeft),
+                        behavior: SnackBarBehavior.floating);
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }, (ifRight) {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                        (root) => false);
+                  });
+                },
+                title: "Sign In"),
           ],
         ),
       ),

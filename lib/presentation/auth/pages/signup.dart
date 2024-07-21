@@ -5,8 +5,8 @@ import 'package:spotify/common/widgets/buttons/basic_button.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
 import 'package:spotify/data/models/auth/create_user_req.dart';
 import 'package:spotify/domain/usecases/auth/signup.dart';
+import 'package:spotify/home/pages/home.dart';
 import 'package:spotify/presentation/auth/pages/signin.dart';
-import 'package:spotify/presentation/root/pages/root.dart';
 
 import '../../../service_locator.dart';
 
@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
           height: 40,
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: 30,
           vertical: 50,
@@ -72,7 +72,7 @@ class SignUpPage extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RootPage(),
+                          builder: (context) => HomePage(),
                         ),
                         (route) => false);
                   });
@@ -138,7 +138,7 @@ class BottomText extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => const SignInPage(),
+                  builder: (BuildContext context) => SignInPage(),
                 ),
               );
             },
