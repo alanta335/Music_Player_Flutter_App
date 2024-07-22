@@ -5,6 +5,7 @@ import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/core/config/assets/app_images.dart';
 import 'package:spotify/core/config/assets/app_vectors.dart';
 import 'package:spotify/core/config/theme/app_colors.dart';
+import 'package:spotify/presentation/home/pages/widgets/all_songs.dart';
 import 'package:spotify/presentation/home/pages/widgets/new_songs.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,7 +49,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 Container(),
                 Container(),
               ]),
-            )
+            ),
+            const AllSongs(),
           ],
         ),
       ),

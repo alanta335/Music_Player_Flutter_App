@@ -5,6 +5,8 @@ import 'package:spotify/domain/entity/song/song.dart';
 
 abstract class SongService {
   Future<Either> getNewSongs();
+
+  Future<Either> getAllSongs();
 }
 
 class SongFirebaseServiceImpl extends SongService {
@@ -16,6 +18,23 @@ class SongFirebaseServiceImpl extends SongService {
           .collection('Songs')
           .orderBy('releaseDate', descending: true)
           .limit(3)
+          .get();
+      for (var song in data.docs) {
+        songs.add(SongModel.fromJson(song.data()).toEntity());
+      }
+      return Right(songs);
+    } on Exception catch (e) {
+      return const Left('error occured during fetching new songs');
+    }
+  }
+
+  @override
+  Future<Either> getAllSongs() async {
+    try {
+      List<SongEntity> songs = [];
+      var data = await FirebaseFirestore.instance
+          .collection('Songs')
+          .orderBy('releaseDate', descending: true)
           .get();
       for (var song in data.docs) {
         songs.add(SongModel.fromJson(song.data()).toEntity());

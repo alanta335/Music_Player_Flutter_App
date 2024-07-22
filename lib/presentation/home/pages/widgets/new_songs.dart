@@ -11,21 +11,26 @@ class NewSongs extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => NewSongsCubit()..getNewSongs(),
-      child: SizedBox(
-          height: 200,
-          child: BlocBuilder<NewSongsCubit, NewSongsState>(
-            builder: (context, state) {
-              if (state is NewSongsLoaded) {
-                return songs(state.songs);
-              }
-              if (state is NewSongsLoading) {
-                return Container(
-                    alignment: Alignment.center,
-                    child: const CircularProgressIndicator());
-              }
-              return Container();
-            },
-          )),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+        ),
+        child: SizedBox(
+            height: 200,
+            child: BlocBuilder<NewSongsCubit, NewSongsState>(
+              builder: (context, state) {
+                if (state is NewSongsLoaded) {
+                  return songs(state.songs);
+                }
+                if (state is NewSongsLoading) {
+                  return Container(
+                      alignment: Alignment.center,
+                      child: const CircularProgressIndicator());
+                }
+                return Container();
+              },
+            )),
+      ),
     );
   }
 
