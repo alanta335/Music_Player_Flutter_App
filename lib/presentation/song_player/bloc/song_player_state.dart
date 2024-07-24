@@ -7,3 +7,5 @@ class SongPlayerLoading extends SongPlaterSate {}
 class SongPlayerLoaded extends SongPlaterSate {}
 
 class SongPlayerFailuer extends SongPlaterSate {}
+
+class SongPlayerStopped extends SongPlaterSate {}

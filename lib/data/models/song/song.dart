@@ -8,12 +8,14 @@ class SongModel {
     required Timestamp releaseDate,
     required String title,
     required String coverUrl,
+    required String songUrl,
   }) {
     artist = artist;
     duration = duration;
     releaseDate = releaseDate;
     title = title;
     coverUrl = coverUrl;
+    songUrl = songUrl;
   }
 
   SongModel.fromJson(dynamic json) {
@@ -22,15 +24,15 @@ class SongModel {
     releaseDate = json['releaseDate'];
     title = json['title'];
     coverUrl = json['coverUrl'];
+    songUrl = json['songUrl'];
   }
 
   String? artist;
   num? duration;
   Timestamp? releaseDate;
-
   String? title;
-
   String? coverUrl;
+  String? songUrl;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -39,6 +41,7 @@ class SongModel {
     map['releaseDate'] = releaseDate;
     map['title'] = title;
     map['coverUrl'] = coverUrl;
+    map['songUrl'] = songUrl;
     return map;
   }
 
@@ -49,6 +52,7 @@ class SongModel {
       duration: duration!,
       releaseDate: releaseDate!,
       coverUrl: coverUrl!,
+      songUrl: songUrl!,
     );
   }
 }
