@@ -104,7 +104,7 @@ class SongFirebaseServiceImpl extends SongService {
           .collection('Favorites')
           .where('songId', isEqualTo: songId)
           .get();
-      if (favoriteSongs.docs.isNotEmpty) {
+      if (favoriteSongs.docs.isEmpty) {
         return false;
       } else {
         return true;
