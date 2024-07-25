@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
+import 'package:spotify/common/widgets/buttons/favorite_button.dart';
 import 'package:spotify/core/config/theme/app_colors.dart';
 import 'package:spotify/domain/entity/song/song.dart';
 import 'package:spotify/presentation/song_player/bloc/song_player_cubit.dart';
@@ -87,14 +88,7 @@ class SongPLayer extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.favorite_outline_outlined,
-            size: 35,
-            color: AppColors.darkGrey,
-          ),
-        ),
+        FavoriteButton(songEntity: songEntity),
       ],
     );
   }

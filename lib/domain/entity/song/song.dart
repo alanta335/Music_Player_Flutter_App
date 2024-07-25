@@ -7,6 +7,8 @@ class SongEntity {
   final Timestamp releaseDate;
   final String coverUrl;
   final String songUrl;
+  final bool isFavorite;
+  final String songId;
 
   SongEntity({
     required this.title,
@@ -15,5 +17,7 @@ class SongEntity {
     required this.releaseDate,
     required this.coverUrl,
     required this.songUrl,
+    required this.isFavorite,
+    required this.songId,
   });
 }

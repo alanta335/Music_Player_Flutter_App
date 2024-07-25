@@ -9,6 +9,8 @@ class SongModel {
     required String title,
     required String coverUrl,
     required String songUrl,
+    required bool isFavorite,
+    required String songId,
   }) {
     artist = artist;
     duration = duration;
@@ -16,6 +18,8 @@ class SongModel {
     title = title;
     coverUrl = coverUrl;
     songUrl = songUrl;
+    isFavorite = isFavorite;
+    songId = songId;
   }
 
   SongModel.fromJson(dynamic json) {
@@ -33,6 +37,8 @@ class SongModel {
   String? title;
   String? coverUrl;
   String? songUrl;
+  bool? isFavorite;
+  String? songId;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -53,6 +59,8 @@ class SongModel {
       releaseDate: releaseDate!,
       coverUrl: coverUrl!,
       songUrl: songUrl!,
+      isFavorite: isFavorite!,
+      songId: songId!,
     );
   }
 }
